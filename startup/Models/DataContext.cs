@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using startup.Areas.Admin.Models;
 
 namespace startup.Models
 {
@@ -10,5 +11,6 @@ namespace startup.Models
         }
         public DbSet<Menu> Menus{ get; set; }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<AdminMenu> AdminMenus { get; set; }
     }
 }
