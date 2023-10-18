@@ -40,6 +40,22 @@ namespace startup.Controllers
             return View(post);
         }
 
+        [Route("/list-{slug}-{id:int}.html", Name = "List")]
+        public IActionResult List(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var list = _context.PostMenus
+                .Where(m => (m.MenuID == id) && (m.IsActive == true))
+                .Take(8).ToList();
+            if (list == null)
+            {
+                return NotFound();
+            }
+            return View(list);
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
